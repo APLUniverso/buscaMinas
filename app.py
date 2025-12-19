@@ -57,12 +57,12 @@ def imprimirTablero(tablero):
 
 
 dimensiones = [10,10]
-num_minas = 10
+num_minas = 20
 tablero = []
 minas = []
 
 #Se crean las cordenadas de la minas
-for i in range(0,10):
+for i in range(0,num_minas):
     mina = random.randint(0,(dimensiones[0]*dimensiones[1])-1) # mina random del 1 al 99 pa este caso
     if mina not in minas: # Verificamos que la mina no se repita
         if mina < 10: # si la mina es de un digito el x es 0
