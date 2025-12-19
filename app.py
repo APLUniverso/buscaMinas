@@ -66,10 +66,15 @@ def  crearMinas(dimensiones):
             i -= 1
     return minas
 
-dimensiones = [20,10]
-num_minas = 30
+def espasiador(text,caracteres):
+    espacios = int((caracteres - len(text))/2)
+    return f"{' '*espacios}{text}{' '*espacios}"
+
+dimensiones = [10,10]
+num_minas = 10
 tablero = []
 minas = crearMinas(dimensiones)
 
+print(espasiador("BUSCA MINAS",dimensiones[1]+dimensiones[1]-1))
 imprimirTablero(crearTablero(dimensiones,minas))
 
