@@ -1,6 +1,10 @@
 # se crea un generador del tablero tradicional del busca minas
 import random
 
+def colorear(color,text):
+    colors = dict(BLACK = '\033[30m',RED = '\033[31m',GREEN = '\033[32m',YELLOW = '\033[33m',BLUE = '\033[34m',MAGENTA = '\033[35m',CYAN = '\033[36m',WHITE = '\033[37m',AZUL_RARO = '\033[38;5;24m',RESET = '\033[0m')
+    return f"{colors.get(color)}{text}{colors.get('RESET')}"
+
 def numMinasAlrededor(cordenada,minas):
     x = cordenada[0]
     y = cordenada[1]
@@ -27,10 +31,23 @@ def crearTablero(dimensiones, minas):
         linea = []
         for y in range(dimensiones[1]):
             if [x,y] in minas:
-                linea.append("X")
+                linea.append(colorear("RED","X"))
             else:
-                num = numMinasAlrededor([x,y],minas)
-                linea.append(str(num))
+                num = str(numMinasAlrededor([x,y],minas))
+                match num :
+                    case "1":
+                        num = colorear("BLUE",num)
+                    case "2":
+                        num = colorear("GREEN",num)
+                    case "3":
+                        num = colorear("RED",num)
+                    case "4":
+                        num = colorear("MAGENTA",num)
+                    case "5":
+                        num = colorear("YELLOW",num)
+                    case _:
+                        num = colorear("WHITE",num)
+                linea.append(num)
         tablero.append(linea)
     return tablero
 
