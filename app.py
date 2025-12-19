@@ -30,13 +30,13 @@ def crearTablero(dimensiones, minas):
                 linea.append("X")
             else:
                 num = numMinasAlrededor([x,y],minas)
-                linea.append(num)
+                linea.append(str(num))
         tablero.append(linea)
     return tablero
 
 def imprimirTablero(tablero):
     for linea in tablero:
-        print("".join(linea)+"\n")
+        print(" ".join(linea))
 
 
 dimensiones = [10,10]
